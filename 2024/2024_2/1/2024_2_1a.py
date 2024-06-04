@@ -38,5 +38,21 @@ bounds = [(0, None), (0, None), (0, None), (0, None)]
 res = solve_linear_programming(c, A, b, bounds)
 print(res)
 
-res_perturbed = solve_perturbed_linear_programming(c, A, b, bounds, 0.5)
-print(res_perturbed)
+# res_perturbed = solve_perturbed_linear_programming(c, A, b, bounds, 0.5)
+# print(res_perturbed)
+
+from scipy.optimize import linprog
+
+c = [5, 3, 1, 4, 0]  # Συντελεστές της αντικειμενικής συνάρτησης
+A = [
+    [1, -2, 2, 3, 1],
+    [2, 2, 2, -1, 0],
+    [3, 1, -1, 1, 0],
+    [0, -1, 2, 2, 0]
+]  # Συντελεστές των περιορισμών
+b = [10, 6, 10, 7]  # Δεξί μέρος των περιορισμών
+
+# Λύση του γραμμικού προβλήματος
+res = linprog(c, A_eq=A, b_eq=b, bounds=[(0, None)] * 5, method='simplex')
+
+print(res)

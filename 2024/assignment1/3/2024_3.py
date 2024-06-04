@@ -28,3 +28,8 @@ print("Κατάσταση:", LpStatus[model.status])
 print("Συνολικό Κόστος:", value(model.objective))
 for v in model.variables():
     print(v.name, "=", v.varValue)
+
+# Υπολογισμός συνολικού χρόνου ολοκλήρωσης
+total_time = sum([initial_times[i] - v.varValue for i, v in enumerate(model.variables())])
+print("Συνολικός Χρόνος Ολοκλήρωσης:", total_time)
+

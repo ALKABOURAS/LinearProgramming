@@ -36,23 +36,4 @@ print("Κατάσταση:", LpStatus[model.status])
 print("Συνολικό Κόστος Μείωσης: ", value(model.objective))
 for v in model.variables():
     print(v.name, "=", v.varValue)
-# Δημιουργία του γραφήματος
-import matplotlib.pyplot as plt
-import numpy as np
-
-# Ορισμός των εργασιών
-tasks = ['Task 1', 'Task 2', 'Task 3', 'Task 4', 'Task 5', 'Task 6']
-
-# Ορισμός των αρχικών χρόνων και των ελάχιστων χρόνων
-initial_times = [7, 10, 5, 3, 8, 7]
-min_times = [5, 5, 5, 1, 6, 4]
-
-# Ορισμός των χρόνων μείωσης
-reduction_times = [value(model.variables()[i]) for i in range(6)]
-
-# Ορισμός των χρόνων ολοκλήρωσης
-completion_times = [initial_times[i] - reduction_times[i] for i in range(6)]
-
-# Ορισμός των χρόνων μείωσης
-costs = [6, 10, 0, 8, 8, 3]
-
+print("Συνολικός Χρόνος Ολοκλήρωσης: ", value(T1 + T2 + T3))
